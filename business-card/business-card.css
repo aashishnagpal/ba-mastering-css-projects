@@ -24,6 +24,7 @@ a.regular-link {
   width: 34em;
   height: 20em;
   position: relative;
+  -webkit-perspective: 1000px;
   perspective: 1000px; /* set perspective for 3D effect*/
   margin: 10% auto;
   color: #fff;
@@ -37,23 +38,30 @@ a.regular-link {
   width: 100%;
   height: 100%;
   position: relative;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; /* this applies/preserves the perspective evenly over children */
+  -webkit-transition: box-shadow 1s, -webkit-transform 1s;
+  transition: box-shadow 1s, -webkit-transform 1s;
   transition: transform 1s, box-shadow 1s;
+  transition: transform 1s, box-shadow 1s, -webkit-transform 1s;
 }
 
 /* Hover effect in 3D */
 .card:hover {
+  -webkit-transform: rotateX(20deg);
   transform: rotateX(20deg);
   box-shadow: 0 20px 20px rgba(50, 50, 50, 0.2);
 }
 
 /* Flip effect using checkbox */
 #card-flip:checked ~ .card {
+  -webkit-transform: rotateX(180deg);
   transform: rotateX(180deg);
 }
 
 /* reverse hover effect for flipped card */
 #card-flip:checked ~ .card:hover {
+  -webkit-transform: rotateX(160deg);
   transform: rotateX(160deg);
   box-shadow: 0 20px 20px rgba(200, 200, 200, 0.2);
 }
@@ -69,12 +77,14 @@ label[for="card-flip"] {
   position: absolute;
   right: 0;
   top: 0;
+  -webkit-transform: translate3d(0, 0, 0.1em);
   transform: translate3d(0, 0, 0.1em);
   cursor: pointer;
 }
 
 /* another necessary declaration for translating the same flipping icon to the backface */
 #card-flip:checked ~ .card > label[for="card-flip"] {
+  -webkit-transform: translate3d(0, 10.3em, -0.1em);
   transform: translate3d(0, 10.3em, -0.1em);
 }
 
@@ -82,6 +92,7 @@ label[for="card-flip"] {
 .card > [class|="card"] {
   margin: 0;
   position: absolute;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   width: 100%;
   height: 100%;
@@ -95,6 +106,7 @@ label[for="card-flip"] {
 .card-back {
   background: url(images/card-back.jpg);
   background-size: 100% 100%;
+  -webkit-transform: rotateX(180deg);
   transform: rotateX(180deg);
 
 }
@@ -117,21 +129,33 @@ label[for="card-flip"] {
 }
 
 .links {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .links a {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
 }
 
 .social {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 2.8em;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
   align-items: baseline;
 }
 
 .encyclopedia {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: flex-end;
 }
 
@@ -152,6 +176,8 @@ label[for="card-flip"] {
 }
 
 .other-social-media {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   text-align: right;
 }

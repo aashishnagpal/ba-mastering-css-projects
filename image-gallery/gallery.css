@@ -11,6 +11,8 @@ body * {
 }
 
 .gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
   width: 100%;
@@ -21,6 +23,8 @@ body * {
 }
 
 .gallery__img-thumbnail {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
 }
 
@@ -40,6 +44,7 @@ body * {
   width: 100%;
   opacity: 0;
   left: 0;
+  -webkit-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
 }
 
