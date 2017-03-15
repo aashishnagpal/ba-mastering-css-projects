@@ -1,0 +1,54 @@
+body {
+  width: 960px;
+  margin: 2% auto;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body * {
+  box-sizing: inherit;
+}
+
+.tabs {
+  width: 100%;
+  position: relative;
+}
+
+.tabs .tab-input {
+  display: none;
+}
+
+.tabs .tab-title {
+  padding: 0.6em 0.8em;
+  -webkit-transition: color 0.5s ease;
+  transition: color 0.5s ease;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tabs .tab-title:hover {
+  color: cyan;
+}
+
+.tabs .tab {
+  display: inline-block;
+}
+
+.tabs .tab-content {
+  margin-top: 1em;
+  padding: 2em 1em;
+  display: none;
+  border-bottom: 2px solid cyan;
+  width: 100%;
+}
+
+.tab-input:checked + .tab-title {
+  color: cyan;
+  border-bottom: 2px solid cyan;
+}
+
+.tab-input:checked + .tab-title + .tab-content {
+  display: block;
+  position: absolute;
+  left: 0;
+}

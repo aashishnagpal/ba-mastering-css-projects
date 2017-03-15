@@ -1,0 +1,165 @@
+body {
+  width: 960px;
+  margin: 2% auto;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  background: #888;
+}
+
+body * {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a.regular-link {
+  color: #ef4d75;
+}
+
+.card-container {
+  width: 34em;
+  height: 20em;
+  position: relative;
+  perspective: 1000px; /* set perspective for 3D effect*/
+  margin: 10% auto;
+  color: #fff;
+}
+
+#card-flip {
+  display: none;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d; /* this applies/preserves the perspective evenly over children */
+  transition: transform 1s, box-shadow 1s;
+}
+
+/* Hover effect in 3D */
+.card:hover {
+  transform: rotateX(20deg);
+  box-shadow: 0 20px 20px rgba(50, 50, 50, 0.2);
+}
+
+/* Flip effect using checkbox */
+#card-flip:checked ~ .card {
+  transform: rotateX(180deg);
+}
+
+/* reverse hover effect for flipped card */
+#card-flip:checked ~ .card:hover {
+  transform: rotateX(160deg);
+  box-shadow: 0 20px 20px rgba(200, 200, 200, 0.2);
+}
+
+/* position the flipping icon so that it both stays at right top and */
+/* also transforms in 3D along with the rest of the card */
+/* Note to self: do not use z-index as it */
+/* does not give the desired result and also meddles with backface-visibility */
+label[for="card-flip"] {
+  margin: 0.2em 0.3em;
+  font-size: 1.7em;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate3d(0, 0, 0.1em);
+  cursor: pointer;
+}
+
+/* another necessary declaration for translating the same flipping icon to the backface */
+#card-flip:checked ~ .card > label[for="card-flip"] {
+  transform: translate3d(0, 10.3em, -0.1em);
+}
+
+/* set position and backface-visibility of the card's front and back faces */
+.card > [class|="card"] {
+  margin: 0;
+  position: absolute;
+  backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.card-front {
+  background: url(images/bg2.png);
+  padding: 1.5em;
+}
+
+.card-back {
+  background: url(images/card-back.jpg);
+  background-size: 100% 100%;
+  transform: rotateX(180deg);
+
+}
+
+/* Following declarations style the content within the card */
+.name {
+  font-size: 3em;
+  font-weight: 300;
+  margin: 0;
+}
+
+.title {
+  font-size: 1em;
+  font-weight: 300;
+  margin: 0 0 2em;
+}
+
+.greeting {
+  margin: 0 0 0.5em;
+}
+
+.links {
+  display: flex;
+}
+
+.links a {
+  flex: 1;
+}
+
+.social {
+  display: flex;
+  margin-top: 2.8em;
+  align-items: baseline;
+}
+
+.encyclopedia {
+  flex: 1;
+  align-items: flex-end;
+}
+
+.encyclopedia div {
+  display: inline-block;
+}
+
+.encyclopedia div p {
+  margin: 0.1em 0.5em;
+}
+
+.encyclopedia img {
+  vertical-align: bottom;
+}
+
+.encyclopedia-label {
+  color: #9c5fe6;
+}
+
+.other-social-media {
+  flex: 1;
+  text-align: right;
+}
+
+.other-social-media a {
+  margin-left: 0.5em;
+}
+
+.other-social-media img {
+  vertical-align: bottom;
+}
